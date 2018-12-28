@@ -18,7 +18,7 @@ class FbConnection {
       'record_label',
       'cover',
       'picture{url}',
-      'photos{images,width,height}',
+      //'photos{images,width,height}',
     ];
   
     this.currentLikes = 0;

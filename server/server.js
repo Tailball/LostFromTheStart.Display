@@ -11,7 +11,7 @@ server.get('/', (req, res) => {
   res.status(200).send({
     result: 'success',
     route: 'root',
-    message: 'GET request to route succesful'
+    message: 'GET request to route successful'
   });
 });
 
@@ -20,7 +20,7 @@ server.get('/test/:id', (req, res) => {
     result: 'success',
     route: 'test',
     id: req.params.id,
-    message: `GET request to test with id ${req.params.id} succesful`
+    message: `GET request to test with id ${req.params.id} successful`
   });
 });
 
