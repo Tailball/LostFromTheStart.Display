@@ -1,13 +1,15 @@
 {
   "name": "lostfromthestart.display.server",
   "version": "1.0.0",
-  "description": "",
+  "description": "Server side for the Facebook like display app",
   "main": "index.js",
+  "author": "Jochen Panjaer",
+  "license": "ISC",
+  
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Jochen Panjaer",
-  "license": "ISC",
+  
   "dependencies": {
     "axios": "^0.18.0",
     "dotenv": "^8.2.0",

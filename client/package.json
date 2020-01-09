@@ -1,16 +1,29 @@
 {
   "name": "lostfromthestart.display.client",
   "version": "1.0.0",
-  "description": "",
+  "description": "Client side for the Facebook like display app",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "author": "Jochen Panjaer",
   "license": "ISC",
+  
+  "scripts": {
+    "start": "parcel src/index.html",
+    "build": "parcel build src/index.html"
+  },
+
   "devDependencies": {
     "parcel-bundler": "^1.12.4",
     "parcel-plugin-svelte": "^4.0.5",
+    "sass": "^1.24.3",
     "svelte": "^3.16.7"
-  }
+  },
+
+  "dependencies": {
+    "axios": "^0.19.1",
+    "lodash": "^4.17.15"
+  },
+
+  "browserslist": [
+    "last 1 chrome versions"
+  ]
 }
