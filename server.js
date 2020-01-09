@@ -1,11 +1,26 @@
+require('dotenv').config();
+
 const express = require('express');
-const FbConnection = require('./FbConnection');
-const accessToken = require('./tokens.json');
+const FbConnection = require('./persistence/thirdparty/fbConnection');
 
+
+//SERVER SETUP
 const server = express();
-const port = 4321;
+const port = process.env.PORT || 3000;
 
-const fbConnection = new FbConnection(accessToken.access_token);
+//CONNECTIONS SETUP
+const fbConnection = new FbConnection(process.env.ACCESS_TOKEN);
+
+
+//SETUP MIDDLEWARE PRE
+//JSON
+//LOGGING
+
+//ROUTING STATIC
+//ROUTING API
+
+//SETUP MIDDLEWARE POST
+//NOTFOUND/ERROR
 
 server.get('/', (req, res) => {
   res.status(200).send({
@@ -41,4 +56,5 @@ server.get('/fbdata/:type', (req, res) => {
   }
 });
 
-server.listen(port, () => { console.log('server is now up and listening on port ' + port) });
+
+server.listen(port, console.log(`server is now up and listening on port ${port}`));
