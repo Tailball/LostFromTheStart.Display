@@ -137,17 +137,7 @@ class Scraper {
         console.log('_parseLikes');
 
         const plikes = likes.replace('.', '').replace(',', '');
-        console.log('> ', plikes);
-
-        try {
-            const intlikes = parseInt(plikes, 10);
-            console.log('> ', intlikes);
-                
-            return intlikes;
-        }
-        catch(err) {
-            return plikes;
-        }
+        return plikes;
     }
 }
 
