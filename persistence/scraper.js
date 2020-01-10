@@ -27,10 +27,10 @@ class Scraper {
                 const parsed = await this._parseHtml(scrape);
                 const likes = this._lookForLikes(parsed);
                 console.log('likes:', likes);
-                const parsedLikes = this._parseLikes(likes);
-                console.log('parsedlikes:', parsedlikes);
+                // const parsedLikes = this._parseLikes(likes);
+                // console.log('parsedlikes:', parsedlikes);
 
-                res(parsedLikes);
+                res(likes);
             }
             catch(err) {
                 rej(err);
