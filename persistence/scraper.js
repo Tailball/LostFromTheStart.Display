@@ -14,6 +14,9 @@ class Scraper {
             'Total Follows',
             'Totaal aantal volgers'
         ];
+
+        this._meta = "._4bl7._3xoj > ._3xok";
+        this._val = "._4bl7._3xoj > ._3xom";
     }
 
     getPageLikes() {
@@ -73,8 +76,10 @@ class Scraper {
     _lookForLikes(element) {
         console.log('_lookForLikes');
 
-        const metadata = element(process.env.SCRAPE_IDENTIFIER_METADATA);
-        const values = element(process.env.SCRAPE_IDENTIFIER_VALUES);
+        // const metadata = element(process.env.SCRAPE_IDENTIFIER_METADATA);
+        // const values = element(process.env.SCRAPE_IDENTIFIER_VALUES);
+        const metadata = element(this._meta);
+        const values = element(this._val);
 
         for(let i = 0; i < metadata.length; i++) {
             const isLikeNode = this._isLikeNode(metadata[i]);
