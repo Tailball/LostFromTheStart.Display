@@ -26,7 +26,9 @@ class Scraper {
                 const scrape = await this._getHtml();
                 const parsed = await this._parseHtml(scrape);
                 const likes = this._lookForLikes(parsed);
+                console.log('likes:', likes);
                 const parsedLikes = this._parseLikes(likes);
+                console.log('parsedlikes:', parsedlikes);
 
                 res(parsedLikes);
             }
@@ -81,10 +83,13 @@ class Scraper {
         const metadata = element(this._meta);
         const values = element(this._val);
 
+        console.log(`> length of nodes: ${metadata.length}`);
+
         for(let i = 0; i < metadata.length; i++) {
             const isLikeNode = this._isLikeNode(metadata[i]);
             
             if(isLikeNode) {
+                console.log('> has like node');
                 return this._grabLikes(values[i]);
             }
         }
@@ -102,6 +107,8 @@ class Scraper {
         element.children.forEach(child => {
             if(!child.type || !child.data) return;
             if(!child.type === 'text') return;
+
+            console.log('evaluating children > ', child.data);
 
             if(this._likeMatches.includes(child.data)) isLikeNode = true;
         });     
