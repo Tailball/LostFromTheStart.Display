@@ -26,10 +26,7 @@ class Scraper {
                 const scrape = await this._getHtml();
                 const parsed = await this._parseHtml(scrape);
                 const likes = this._lookForLikes(parsed);
-                console.log('likes:', likes);
-                // const parsedLikes = this._parseLikes(likes);
-                // console.log('parsedlikes:', parsedlikes);
-
+                
                 res(likes);
             }
             catch(err) {
@@ -41,8 +38,6 @@ class Scraper {
 
     _getHtml() {
         return new Promise(async (res, rej) => {
-
-            console.log('_getHtml');
 
             try {
                 const result = await Axios.get(this._url);
@@ -62,8 +57,6 @@ class Scraper {
     _parseHtml(html) {
         return new Promise((res, rej) => {
 
-            console.log('_parseHtml');
-
             try {
                 const parsed = Cheerio.load(html);
                 res(parsed);
@@ -76,20 +69,13 @@ class Scraper {
     }
 
     _lookForLikes(element) {
-        console.log('_lookForLikes');
-
-        // const metadata = element(process.env.SCRAPE_IDENTIFIER_METADATA);
-        // const values = element(process.env.SCRAPE_IDENTIFIER_VALUES);
-        const metadata = element(this._meta);
-        const values = element(this._val);
-
-        console.log(`> length of nodes: ${metadata.length}`);
+        const metadata = element(process.env.SCRAPE_IDENTIFIER_METADATA);
+        const values = element(process.env.SCRAPE_IDENTIFIER_VALUES);
 
         for(let i = 0; i < metadata.length; i++) {
             const isLikeNode = this._isLikeNode(metadata[i]);
             
             if(isLikeNode) {
-                console.log('> has like node');
                 return this._grabLikes(values[i]);
             }
         }
@@ -98,8 +84,6 @@ class Scraper {
     }
 
     _isLikeNode(element) {
-        console.log('_isLikeNode');
-
         if(!element || !element.children) return false;
 
         let isLikeNode = false;
@@ -108,8 +92,6 @@ class Scraper {
             if(!child.type || !child.data) return;
             if(!child.type === 'text') return;
 
-            console.log('evaluating children > ', child.data);
-
             if(this._likeMatches.includes(child.data)) isLikeNode = true;
         });     
         
@@ -117,8 +99,6 @@ class Scraper {
     }
 
     _grabLikes(element) {
-        console.log('_grabLikes');
-
         let likes = '0';
         
         if(!element || !element.children) return likes;
@@ -131,13 +111,6 @@ class Scraper {
         });
 
         return likes;
-    }
-
-    _parseLikes(likes) {
-        console.log('_parseLikes');
-
-        const plikes = likes.replace('.', '').replace(',', '');
-        return plikes;
     }
 }
 
