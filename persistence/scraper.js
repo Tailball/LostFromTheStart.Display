@@ -37,6 +37,8 @@ class Scraper {
     _getHtml() {
         return new Promise(async (res, rej) => {
 
+            console.log('_getHtml');
+
             try {
                 const result = await Axios.get(this._url);
                 
@@ -55,6 +57,8 @@ class Scraper {
     _parseHtml(html) {
         return new Promise((res, rej) => {
 
+            console.log('_parseHtml');
+
             try {
                 const parsed = Cheerio.load(html);
                 res(parsed);
@@ -67,6 +71,8 @@ class Scraper {
     }
 
     _lookForLikes(element) {
+        console.log('_lookForLikes');
+
         const metadata = element(process.env.SCRAPE_IDENTIFIER_METADATA);
         const values = element(process.env.SCRAPE_IDENTIFIER_VALUES);
 
@@ -82,6 +88,8 @@ class Scraper {
     }
 
     _isLikeNode(element) {
+        console.log('_isLikeNode');
+
         if(!element || !element.children) return false;
 
         let isLikeNode = false;
@@ -97,6 +105,8 @@ class Scraper {
     }
 
     _grabLikes(element) {
+        console.log('_grabLikes');
+
         let likes = '0';
         
         if(!element || !element.children) return likes;
@@ -112,6 +122,8 @@ class Scraper {
     }
 
     _parseLikes(likes) {
+        console.log('_parseLikes');
+
         return parseInt(likes.replace('.', ''), 10);
     }
 }
