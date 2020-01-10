@@ -136,7 +136,7 @@ class Scraper {
     _parseLikes(likes) {
         console.log('_parseLikes');
 
-        return parseInt(likes.replace('.', ''), 10);
+        return parseInt(likes.replace('.', '').replace(',', ''), 10);
     }
 }
 
