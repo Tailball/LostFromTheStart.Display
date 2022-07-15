@@ -13,7 +13,7 @@
     "parcel-bundler": "^1.12.4",
     "parcel-plugin-svelte": "^4.0.5",
     "sass": "^1.24.3",
-    "svelte": "^3.16.7"
+    "svelte": "^3.49.0"
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.12.0",
